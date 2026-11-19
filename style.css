@@ -1,0 +1,2132 @@
+/* ==========================================================================
+   ACT UTILITARIANISM INTERACTIVE ODYSSEY - STYLESHEET
+   Cyber-Dark Glassmorphic Luxury Design with Fluid Motion & Responsive Layout
+   ========================================================================== */
+
+:root {
+    /* Color Palette */
+    --bg-deep: #07090e;
+    --bg-card: rgba(18, 22, 36, 0.75);
+    --bg-card-hover: rgba(26, 32, 53, 0.88);
+    --border-glass: rgba(255, 255, 255, 0.09);
+    --border-glow: rgba(0, 245, 160, 0.25);
+    
+    /* Neon Accents */
+    --neon-emerald: #00f5a0;
+    --neon-cyan: #00d9f5;
+    --neon-purple: #a855f7;
+    --neon-gold: #fbbf24;
+    --neon-red: #f43f5e;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+
+    /* Fonts */
+    --font-ar: 'Cairo', system-ui, -apple-system, sans-serif;
+    --font-en: 'Outfit', -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    /* Physics & Shadows */
+    --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+    --card-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.6), 0 0 20px -5px rgba(0, 245, 160, 0.05);
+    --neon-glow-emerald: 0 0 25px rgba(0, 245, 160, 0.4);
+    --neon-glow-cyan: 0 0 25px rgba(0, 217, 245, 0.4);
+    --neon-glow-purple: 0 0 25px rgba(168, 85, 247, 0.4);
+    --neon-glow-red: 0 0 25px rgba(244, 63, 94, 0.4);
+}
+
+/* ==========================================================================
+   Base Reset & Typography
+   ========================================================================== */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: var(--bg-deep);
+    color: var(--text-primary);
+    font-family: var(--font-ar);
+    line-height: 1.6;
+    letter-spacing: -0.01em;
+}
+
+/* Canvas Background */
+#bg-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.55;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--neon-emerald);
+}
+
+/* ==========================================================================
+   Header & Top Navigation
+   ========================================================================== */
+.top-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 64px;
+    background: rgba(10, 13, 22, 0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-glass);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    z-index: 100;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo-orb {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(0, 245, 160, 0.2), rgba(0, 217, 245, 0.2));
+    border: 1px solid var(--neon-emerald);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--neon-emerald);
+    font-size: 1.2rem;
+    box-shadow: 0 0 15px rgba(0, 245, 160, 0.3);
+    animation: pulseOrb 4s infinite ease-in-out;
+}
+
+.brand-text h1 {
+    font-size: 1.15rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.brand-text h1 span {
+    font-family: var(--font-en);
+    font-size: 0.85rem;
+    color: var(--neon-cyan);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    opacity: 0.9;
+}
+
+.en-badge {
+    display: block;
+    font-family: var(--font-en);
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--neon-gold);
+    letter-spacing: 0.15em;
+    margin-bottom: -2px;
+}
+
+.nav-metrics {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.slide-indicator {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.35rem 0.8rem;
+    border-radius: 20px;
+    border: 1px solid var(--border-glass);
+    color: var(--neon-emerald);
+    font-weight: 600;
+}
+
+.sound-toggle-btn, .menu-toggle-btn, .fullscreen-toggle-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-glass);
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s var(--ease-smooth);
+}
+
+.sound-toggle-btn:hover, .menu-toggle-btn:hover, .fullscreen-toggle-btn:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.12);
+    border-color: var(--neon-cyan);
+    transform: translateY(-2px);
+}
+
+.sound-toggle-btn.muted {
+    color: var(--neon-red);
+}
+
+/* Top Progress Bar */
+.progress-bar-container {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.04);
+    z-index: 101;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 8.33%;
+    background: linear-gradient(90deg, var(--neon-emerald), var(--neon-cyan));
+    box-shadow: 0 0 10px var(--neon-emerald);
+    transition: width 0.4s var(--ease-smooth);
+}
+
+/* ==========================================================================
+   Slide Drawer (Quick Navigation)
+   ========================================================================== */
+.slide-drawer {
+    position: fixed;
+    top: 64px;
+    right: -380px;
+    width: 360px;
+    height: calc(100vh - 64px);
+    background: rgba(14, 18, 30, 0.95);
+    backdrop-filter: blur(25px);
+    border-left: 1px solid var(--border-glass);
+    z-index: 200;
+    transition: right 0.4s var(--ease-smooth);
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    box-shadow: -20px 0 50px rgba(0, 0, 0, 0.7);
+}
+
+.slide-drawer.open {
+    right: 0;
+}
+
+.drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-glass);
+}
+
+.drawer-header h3 {
+    font-size: 1.1rem;
+    color: var(--neon-cyan);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.close-drawer {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-drawer:hover {
+    color: var(--neon-red);
+}
+
+.drawer-list {
+    list-style: none;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.drawer-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s var(--ease-smooth);
+}
+
+.drawer-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--border-glow);
+    transform: translateX(-4px);
+}
+
+.drawer-item.active {
+    background: rgba(0, 245, 160, 0.12);
+    border-color: var(--neon-emerald);
+    color: var(--neon-emerald);
+}
+
+.drawer-num {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+.drawer-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   Presentation Slides Deck Area
+   ========================================================================== */
+.presentation-wrapper {
+    position: relative;
+    width: 100vw;
+    height: calc(100vh - 64px - 68px);
+    margin-top: 67px;
+    overflow: hidden;
+    z-index: 10;
+}
+
+.slide-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 1.5rem 3rem;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
+    touch-action: pan-y;
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.96) translateY(20px);
+    transition: opacity 0.35s var(--ease-smooth), transform 0.35s var(--ease-smooth);
+}
+
+.slide-card.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1) translateY(0);
+}
+
+.slide-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding-bottom: 2rem;
+}
+
+/* Pill Badges */
+.badge-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 0.8rem;
+}
+
+.pill {
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 0.35rem 0.9rem;
+    border-radius: 30px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    backdrop-filter: blur(10px);
+}
+
+.pill.neon-emerald {
+    background: rgba(0, 245, 160, 0.12);
+    border: 1px solid rgba(0, 245, 160, 0.35);
+    color: var(--neon-emerald);
+}
+
+.pill.neon-cyan {
+    background: rgba(0, 217, 245, 0.12);
+    border: 1px solid rgba(0, 217, 245, 0.35);
+    color: var(--neon-cyan);
+}
+
+.pill.neon-purple {
+    background: rgba(168, 85, 247, 0.12);
+    border: 1px solid rgba(168, 85, 247, 0.35);
+    color: var(--neon-purple);
+}
+
+.pill.neon-gold {
+    background: rgba(251, 191, 36, 0.12);
+    border: 1px solid rgba(251, 191, 36, 0.35);
+    color: var(--neon-gold);
+}
+
+.pill.neon-red {
+    background: rgba(244, 63, 94, 0.12);
+    border: 1px solid rgba(244, 63, 94, 0.35);
+    color: var(--neon-red);
+}
+
+/* Slide Titles */
+.slide-title {
+    font-size: 2.1rem;
+    font-weight: 900;
+    line-height: 1.25;
+    margin-bottom: 1.5rem;
+}
+
+.slide-title .en-sub {
+    display: block;
+    font-family: var(--font-en);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-top: 0.3rem;
+}
+
+/* Gradient Texts */
+.gradient-text {
+    background: linear-gradient(135deg, var(--neon-emerald), var(--neon-cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-purple {
+    background: linear-gradient(135deg, var(--neon-purple), var(--neon-cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-gold {
+    background: linear-gradient(135deg, var(--neon-gold), #ff8c00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-red {
+    background: linear-gradient(135deg, var(--neon-red), #ff758c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ==========================================================================
+   Glass Card Containers
+   ========================================================================== */
+.glass-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid var(--border-glass);
+    border-radius: 18px;
+    padding: 1.6rem;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.3s var(--ease-smooth), border-color 0.3s, box-shadow 0.3s;
+}
+
+.glass-card:hover {
+    border-color: rgba(255, 255, 255, 0.16);
+}
+
+.border-red-glow {
+    border-color: rgba(244, 63, 94, 0.4);
+    box-shadow: 0 10px 30px -10px rgba(244, 63, 94, 0.2);
+}
+
+/* Layout Grids */
+.grid-2-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.8rem;
+    align-items: start;
+}
+
+.grid-3-col {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+/* ==========================================================================
+   English Definition Box (Stylish Card)
+   ========================================================================== */
+.en-box {
+    direction: ltr;
+    text-align: left;
+    border-left: 4px solid var(--neon-cyan);
+    margin-bottom: 1.4rem;
+    background: rgba(14, 21, 38, 0.7);
+}
+
+.en-tag {
+    font-family: var(--font-en);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--neon-cyan);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.en-text {
+    font-family: var(--font-en);
+    font-size: 1.05rem;
+    color: #e2e8f0;
+    line-height: 1.65;
+}
+
+.en-text strong {
+    color: var(--neon-emerald);
+}
+
+.formal-quote {
+    font-family: var(--font-en);
+    font-style: italic;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #cbd5e1;
+    position: relative;
+    padding-left: 1.2rem;
+    border-left: 2px solid var(--neon-purple);
+}
+
+.quote-author {
+    font-family: var(--font-en);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--neon-gold);
+    margin-top: 0.8rem;
+    text-align: right;
+}
+
+.concept-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.concept-chip {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: rgba(255, 255, 255, 0.04);
+    padding: 0.5rem 0.9rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-family: var(--font-en);
+}
+
+/* Egyptian Explanation Styling */
+.eg-explanation, .eg-box {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+.eg-heading {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.2rem;
+}
+
+.eg-p {
+    font-size: 1.02rem;
+    color: #cbd5e1;
+    line-height: 1.8;
+}
+
+.highlight-p {
+    background: linear-gradient(90deg, rgba(0, 245, 160, 0.1), transparent);
+    padding: 0.8rem 1.2rem;
+    border-right: 4px solid var(--neon-emerald);
+    border-radius: 0 10px 10px 0;
+    color: #f1f5f9;
+}
+
+.highlight-p-red {
+    background: linear-gradient(90deg, rgba(244, 63, 94, 0.12), transparent);
+    padding: 0.8rem 1.2rem;
+    border-right: 4px solid var(--neon-red);
+    border-radius: 0 10px 10px 0;
+    color: #fecdd3;
+}
+
+.bullet-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.bullet-list li {
+    font-size: 0.98rem;
+    color: #cbd5e1;
+    line-height: 1.7;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+}
+
+.bullet-list li i {
+    margin-top: 0.35rem;
+}
+
+/* ==========================================================================
+   Hero Interactive Scale (Slide 1)
+   ========================================================================== */
+.hero-split {
+    display: grid;
+    grid-template-columns: 1.3fr 0.9fr;
+    gap: 2rem;
+    align-items: center;
+}
+
+.interactive-scale-card {
+    background: radial-gradient(circle at 50% 30%, rgba(20, 28, 48, 0.8), rgba(10, 13, 24, 0.9));
+    border: 1px solid rgba(0, 245, 160, 0.3);
+    text-align: center;
+    padding: 2.2rem 1.5rem;
+}
+
+.scale-visual {
+    margin: 1.5rem 0 2rem;
+    position: relative;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scale-beam {
+    width: 90%;
+    height: 8px;
+    background: linear-gradient(90deg, var(--neon-emerald), var(--neon-red));
+    border-radius: 4px;
+    position: relative;
+    transform-origin: center;
+    transform: rotate(-12deg);
+    transition: transform 0.6s var(--ease-out-back);
+}
+
+.fulcrum {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -10%);
+    font-size: 2.4rem;
+    color: var(--neon-cyan);
+    z-index: 2;
+}
+
+.pan {
+    position: absolute;
+    top: 8px;
+    width: 120px;
+}
+
+.left-pan {
+    left: -20px;
+    transform: translateY(18px);
+}
+
+.right-pan {
+    right: -20px;
+    transform: translateY(-22px);
+}
+
+.pan-content {
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid var(--border-glass);
+    border-radius: 12px;
+    padding: 0.8rem 0.6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.pan-icon {
+    font-size: 1.8rem;
+    margin-bottom: 0.3rem;
+}
+
+.glow-green { color: var(--neon-emerald); filter: drop-shadow(0 0 8px var(--neon-emerald)); }
+.glow-cyan { color: var(--neon-cyan); filter: drop-shadow(0 0 8px var(--neon-cyan)); }
+.glow-purple { color: var(--neon-purple); filter: drop-shadow(0 0 8px var(--neon-purple)); }
+.glow-gold { color: var(--neon-gold); filter: drop-shadow(0 0 8px var(--neon-gold)); }
+.glow-red { color: var(--neon-red); filter: drop-shadow(0 0 8px var(--neon-red)); }
+
+.pan-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.pan-label small {
+    display: block;
+    font-family: var(--font-en);
+    font-size: 0.65rem;
+    color: var(--text-muted);
+}
+
+.weight-badge {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-top: 0.4rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.left-pan .weight-badge { color: var(--neon-emerald); }
+.right-pan .weight-badge { color: var(--neon-red); }
+
+.verdict-banner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.badge-status.success {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(0, 245, 160, 0.15);
+    border: 1px solid var(--neon-emerald);
+    color: var(--neon-emerald);
+    padding: 0.5rem 1.2rem;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+.scale-note {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+}
+
+/* ==========================================================================
+   Slide 2: Interactive Simple Utility Slider
+   ========================================================================== */
+.interactive-slider-box {
+    padding: 1.2rem 1.8rem;
+    background: rgba(15, 20, 34, 0.6);
+}
+
+.slider-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.8rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+.score-display {
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    color: var(--neon-emerald);
+    background: rgba(0, 245, 160, 0.1);
+    padding: 0.25rem 0.8rem;
+    border-radius: 8px;
+    border: 1px solid var(--neon-emerald);
+}
+
+.range-wrap {
+    width: 100%;
+    margin-bottom: 0.6rem;
+}
+
+.custom-range {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 10px;
+    border-radius: 5px;
+    background: linear-gradient(90deg, var(--neon-red), var(--text-muted), var(--neon-emerald));
+    outline: none;
+    cursor: pointer;
+}
+
+.custom-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 3px solid var(--neon-cyan);
+    box-shadow: 0 0 12px var(--neon-cyan);
+    cursor: grab;
+    transition: transform 0.1s;
+}
+
+.custom-range::-webkit-slider-thumb:active {
+    transform: scale(1.2);
+    cursor: grabbing;
+}
+
+.slider-feedback {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* ==========================================================================
+   Slide 3: Founders Cards
+   ========================================================================== */
+.founder-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.founder-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--neon-cyan), var(--neon-emerald));
+}
+
+.founder-card:nth-child(2)::before {
+    background: linear-gradient(90deg, var(--neon-purple), var(--neon-gold));
+}
+
+.founder-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.avatar-ring {
+    width: 54px;
+    height: 54px;
+    border-radius: 16px;
+    background: rgba(0, 217, 245, 0.1);
+    border: 2px solid var(--neon-cyan);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--neon-cyan);
+    box-shadow: 0 0 15px rgba(0, 217, 245, 0.3);
+}
+
+.avatar-ring.mill {
+    border-color: var(--neon-purple);
+    color: var(--neon-purple);
+    background: rgba(168, 85, 247, 0.1);
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.3);
+}
+
+.founder-header h3 {
+    font-size: 1.15rem;
+    font-weight: 800;
+}
+
+.en-mini {
+    display: block;
+    font-family: var(--font-en);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.en-callout {
+    direction: ltr;
+    text-align: left;
+    font-family: var(--font-en);
+    font-size: 0.88rem;
+    background: rgba(255, 255, 255, 0.04);
+    border-left: 3px solid var(--neon-gold);
+    padding: 0.7rem 1rem;
+    border-radius: 0 8px 8px 0;
+    color: #e2e8f0;
+    margin-bottom: 0.8rem;
+}
+
+.eg-speech strong {
+    color: var(--neon-gold);
+    display: block;
+    margin-bottom: 0.4rem;
+}
+
+.eg-speech p {
+    font-size: 0.95rem;
+    color: #cbd5e1;
+    line-height: 1.7;
+}
+
+.tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.mini-tag {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.65rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-glass);
+}
+
+.note-box {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1rem 1.4rem;
+    background: rgba(0, 217, 245, 0.08);
+    border-color: rgba(0, 217, 245, 0.25);
+    font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   Slide 4: The 4 Pillars Grid
+   ========================================================================== */
+.pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.2rem;
+}
+
+.pillar-card {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 1.2rem;
+    position: relative;
+    border-radius: 16px;
+    background: rgba(18, 22, 38, 0.7);
+    transition: transform 0.3s var(--ease-smooth), border-color 0.3s;
+}
+
+.pillar-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--neon-cyan);
+}
+
+.pillar-num {
+    position: absolute;
+    top: 1.2rem;
+    left: 1.2rem;
+    font-family: var(--font-mono);
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.1);
+}
+
+.pillar-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.pillar-card h3 {
+    font-size: 1.15rem;
+    font-weight: 800;
+    margin-bottom: 0.3rem;
+}
+
+.en-term {
+    font-family: var(--font-en);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--neon-cyan);
+    margin-bottom: 0.9rem;
+    direction: ltr;
+    text-align: right;
+}
+
+.pillar-desc {
+    font-size: 0.92rem;
+    color: #94a3b8;
+    line-height: 1.65;
+}
+
+.eg-takeaway {
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-right: 4px solid var(--neon-emerald);
+}
+
+.highlight-tag {
+    font-weight: 900;
+    color: var(--neon-emerald);
+    white-space: nowrap;
+}
+
+/* ==========================================================================
+   Slide 5: Interactive Felicific Calculus
+   ========================================================================== */
+.calculus-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-height: 520px;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+}
+
+.calc-intro {
+    font-size: 0.95rem;
+    color: #e2e8f0;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-glass);
+}
+
+.sliders-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+.calc-row {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 0.75rem 1rem;
+    border-radius: 10px;
+    border: 1px solid var(--border-glass);
+    transition: border-color 0.2s;
+}
+
+.calc-row:hover {
+    border-color: rgba(0, 245, 160, 0.3);
+}
+
+.highlight-calc {
+    background: rgba(0, 245, 160, 0.08);
+    border-color: rgba(0, 245, 160, 0.35);
+}
+
+.calc-label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.3rem;
+}
+
+.calc-name {
+    font-size: 0.92rem;
+    font-weight: 700;
+}
+
+.calc-name small {
+    display: block;
+    font-family: var(--font-en);
+    font-size: 0.72rem;
+    color: var(--neon-cyan);
+    font-weight: 500;
+}
+
+.calc-val {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--neon-emerald);
+    background: rgba(0, 0, 0, 0.3);
+    padding: 0.1rem 0.5rem;
+    border-radius: 6px;
+}
+
+.calc-slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.12);
+    outline: none;
+    cursor: pointer;
+}
+
+.calc-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--neon-emerald);
+    box-shadow: 0 0 10px var(--neon-emerald);
+    cursor: grab;
+}
+
+.slider-hint {
+    display: block;
+    font-size: 0.76rem;
+    color: var(--text-muted);
+    margin-top: 0.35rem;
+}
+
+/* Display / Gauge Section */
+.calculus-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 1.5rem;
+    padding: 2rem;
+}
+
+.circular-meter {
+    position: relative;
+    width: 180px;
+    height: 180px;
+}
+
+.meter-svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.meter-bg {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.08);
+    stroke-width: 10;
+}
+
+.meter-fill {
+    fill: none;
+    stroke: var(--neon-emerald);
+    stroke-width: 10;
+    stroke-linecap: round;
+    stroke-dasharray: 264;
+    stroke-dashoffset: 87;
+    transition: stroke-dashoffset 0.4s var(--ease-smooth), stroke 0.4s;
+    filter: drop-shadow(0 0 8px var(--neon-emerald));
+}
+
+.meter-value {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.score-number {
+    font-family: var(--font-mono);
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #ffffff;
+}
+
+.score-unit {
+    font-family: var(--font-en);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+}
+
+.calc-verdict-box {
+    background: rgba(0, 245, 160, 0.08);
+    border: 1px solid var(--neon-emerald);
+    border-radius: 12px;
+    padding: 1.2rem;
+    width: 100%;
+}
+
+.verdict-title {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--neon-emerald);
+    margin-bottom: 0.5rem;
+}
+
+.verdict-eg-text {
+    font-size: 0.95rem;
+    color: #cbd5e1;
+    line-height: 1.65;
+}
+
+.eg-card-note {
+    font-size: 0.85rem;
+    color: #cbd5e1;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 0.8rem 1rem;
+    border-radius: 10px;
+    border-right: 3px solid var(--neon-gold);
+    text-align: right;
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   Slide 6: Act vs Rule Utilitarianism
+   ========================================================================== */
+.comparison-switch-wrapper {
+    display: flex;
+    gap: 0.8rem;
+    justify-content: center;
+}
+
+.comp-btn {
+    padding: 0.6rem 1.4rem;
+    border-radius: 30px;
+    font-family: var(--font-ar);
+    font-size: 0.92rem;
+    font-weight: 700;
+    border: 1px solid var(--border-glass);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.25s var(--ease-smooth);
+}
+
+.comp-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: var(--text-primary);
+}
+
+.comp-btn.active {
+    background: var(--neon-emerald);
+    color: #07090e;
+    border-color: var(--neon-emerald);
+    box-shadow: 0 0 15px rgba(0, 245, 160, 0.4);
+}
+
+.comparison-board {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.8rem;
+    margin-top: 1rem;
+}
+
+.comp-col {
+    padding: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    transition: all 0.35s var(--ease-smooth);
+}
+
+.comp-col.dimmed {
+    opacity: 0.35;
+    filter: blur(1px);
+    transform: scale(0.98);
+}
+
+.act-col {
+    border-top: 4px solid var(--neon-emerald);
+}
+
+.rule-col {
+    border-top: 4px solid var(--neon-purple);
+}
+
+.col-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.col-icon {
+    font-size: 2rem;
+}
+
+.col-header h3 {
+    font-size: 1.3rem;
+    font-weight: 800;
+}
+
+.en-sub-col {
+    display: block;
+    font-family: var(--font-en);
+    font-size: 0.82rem;
+    color: var(--text-muted);
+}
+
+.comp-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+}
+
+.comp-features li {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #cbd5e1;
+    background: rgba(255, 255, 255, 0.02);
+    padding: 0.8rem 1rem;
+    border-radius: 10px;
+    border: 1px solid var(--border-glass);
+}
+
+.comp-features li strong {
+    color: var(--text-primary);
+    display: block;
+    margin-bottom: 0.2rem;
+}
+
+.summary-pill-box {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 1.2rem 1.6rem;
+    border-right: 4px solid var(--neon-cyan);
+}
+
+.pill-badge-eg {
+    background: var(--neon-cyan);
+    color: #07090e;
+    font-weight: 800;
+    font-size: 0.85rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 6px;
+    white-space: nowrap;
+}
+
+.summary-eg-p {
+    font-size: 0.95rem;
+    color: #cbd5e1;
+    line-height: 1.7;
+}
+
+/* ==========================================================================
+   Slides 7 & 8: Dilemma Experiment Simulators
+   ========================================================================== */
+.dilemma-layout {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 1.8rem;
+}
+
+.scenario-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--neon-gold);
+    margin-bottom: 1rem;
+}
+
+.red-badge {
+    color: var(--neon-red);
+}
+
+.dilemma-story {
+    font-size: 1.05rem;
+    color: #f1f5f9;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.interactive-choice-zone {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 1.2rem;
+    border-radius: 14px;
+    border: 1px solid var(--border-glass);
+}
+
+.choice-prompt {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--neon-cyan);
+    margin-bottom: 0.9rem;
+}
+
+.dilemma-buttons {
+    display: flex;
+    gap: 0.8rem;
+}
+
+.action-btn {
+    flex: 1;
+    padding: 0.9rem 1rem;
+    border-radius: 12px;
+    font-family: var(--font-ar);
+    font-size: 0.92rem;
+    font-weight: 700;
+    border: 1px solid var(--border-glass);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.25s var(--ease-smooth);
+}
+
+.pull-lever, .harvest-organs {
+    background: rgba(0, 245, 160, 0.15);
+    border-color: var(--neon-emerald);
+    color: var(--neon-emerald);
+}
+
+.pull-lever:hover, .harvest-organs:hover {
+    background: var(--neon-emerald);
+    color: #07090e;
+    box-shadow: 0 0 15px rgba(0, 245, 160, 0.5);
+    transform: translateY(-2px);
+}
+
+.do-nothing, .spare-visitor {
+    background: rgba(244, 63, 94, 0.15);
+    border-color: var(--neon-red);
+    color: var(--neon-red);
+}
+
+.do-nothing:hover, .spare-visitor:hover {
+    background: var(--neon-red);
+    color: #ffffff;
+    box-shadow: 0 0 15px rgba(244, 63, 94, 0.5);
+    transform: translateY(-2px);
+}
+
+.decision-feedback {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.04);
+    font-size: 0.92rem;
+    line-height: 1.65;
+    animation: fadeIn 0.4s ease-out;
+}
+
+.math-box {
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    font-family: var(--font-mono);
+    font-size: 0.92rem;
+}
+
+.math-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.score-pos { color: var(--neon-emerald); font-weight: 700; }
+.score-neg { color: var(--neon-red); font-weight: 700; }
+
+.eg-verdict-speech, .eg-shock-analysis {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 1.2rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-glass);
+}
+
+.speech-title, .shock-title {
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--neon-gold);
+    margin-bottom: 0.5rem;
+}
+
+.dilemma-criticism-note {
+    font-size: 0.88rem;
+    color: #94a3b8;
+    margin-top: 1rem;
+    line-height: 1.6;
+    padding-top: 0.8rem;
+    border-top: 1px solid var(--border-glass);
+}
+
+.en-warning-box {
+    direction: ltr;
+    text-align: left;
+    font-family: var(--font-en);
+    font-size: 0.9rem;
+    background: rgba(244, 63, 94, 0.1);
+    border-left: 3px solid var(--neon-red);
+    padding: 0.8rem 1rem;
+    border-radius: 0 8px 8px 0;
+    color: #fecdd3;
+}
+
+/* ==========================================================================
+   Slide 9: 3 Cases Grid
+   ========================================================================== */
+.case-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    position: relative;
+}
+
+.case-icon {
+    font-size: 1.8rem;
+    margin-bottom: 0.2rem;
+}
+
+.case-card h4 {
+    font-size: 1.15rem;
+    font-weight: 800;
+}
+
+.en-case-tag {
+    display: block;
+    font-family: var(--font-en);
+    font-size: 0.78rem;
+    color: var(--neon-cyan);
+    margin-top: -0.4rem;
+}
+
+.case-text {
+    font-size: 0.92rem;
+    color: #94a3b8;
+    line-height: 1.65;
+}
+
+.case-verdict {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 0.8rem;
+    border-radius: 10px;
+    font-size: 0.88rem;
+    line-height: 1.6;
+    border: 1px solid var(--border-glass);
+}
+
+.v-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 800;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    margin-bottom: 0.4rem;
+}
+
+.v-act { background: rgba(0, 245, 160, 0.2); color: var(--neon-emerald); }
+.v-danger { background: rgba(244, 63, 94, 0.2); color: var(--neon-red); }
+
+.eg-synthesis {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.2rem 1.6rem;
+    font-size: 0.98rem;
+    border-right: 4px solid var(--neon-gold);
+}
+
+/* ==========================================================================
+   Slide 10: Critiques Accordion
+   ========================================================================== */
+.critiques-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.critique-item {
+    padding: 1.2rem 1.6rem;
+    cursor: pointer;
+    transition: all 0.3s var(--ease-smooth);
+}
+
+.critique-item:hover {
+    border-color: rgba(244, 63, 94, 0.4);
+}
+
+.critique-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.critique-title-group {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.badge-num {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    background: rgba(244, 63, 94, 0.15);
+    border: 1px solid var(--neon-red);
+    color: var(--neon-red);
+    font-family: var(--font-mono);
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+}
+
+.critique-title-group h4 {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--text-primary);
+}
+
+.en-critique-sub {
+    display: block;
+    font-family: var(--font-en);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.toggle-icon {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    transition: transform 0.3s var(--ease-smooth);
+}
+
+.critique-item.open .toggle-icon {
+    transform: rotate(180deg);
+    color: var(--neon-red);
+}
+
+.critique-body {
+    display: none;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-glass);
+}
+
+.critique-item.open .critique-body {
+    display: block;
+    animation: fadeIn 0.35s ease-out;
+}
+
+.eg-critique-p {
+    font-size: 0.98rem;
+    color: #cbd5e1;
+    line-height: 1.75;
+}
+
+/* ==========================================================================
+   Slide 11: Modern Real-World Grid
+   ========================================================================== */
+.modern-grid {
+    margin-bottom: 1.5rem;
+}
+
+.modern-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    padding: 1.8rem 1.4rem;
+}
+
+.m-icon {
+    font-size: 2.2rem;
+    margin-bottom: 0.4rem;
+}
+
+.modern-card h4 {
+    font-size: 1.15rem;
+    font-weight: 800;
+}
+
+.en-m-sub {
+    display: block;
+    font-family: var(--font-en);
+    font-size: 0.8rem;
+    color: var(--neon-cyan);
+    margin-top: -0.3rem;
+}
+
+.m-desc {
+    font-size: 0.94rem;
+    color: #94a3b8;
+    line-height: 1.7;
+}
+
+.modern-takeaway-bar {
+    padding: 1.2rem 1.6rem;
+    background: rgba(0, 245, 160, 0.08);
+    border-color: rgba(0, 245, 160, 0.3);
+}
+
+.ai-chip {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 0.98rem;
+}
+
+/* ==========================================================================
+   Slide 12: Quiz & Mastery
+   ========================================================================== */
+.summary-sheet {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.sheet-title {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--neon-gold);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.sheet-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.9rem;
+    font-size: 0.95rem;
+    color: #cbd5e1;
+    line-height: 1.7;
+}
+
+.sheet-num {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: rgba(251, 191, 36, 0.15);
+    border: 1px solid var(--neon-gold);
+    color: var(--neon-gold);
+    font-family: var(--font-mono);
+    font-weight: 800;
+    font-size: 0.82rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 0.2rem;
+}
+
+.completion-stamp {
+    margin-top: 1rem;
+    background: linear-gradient(135deg, rgba(0, 245, 160, 0.15), rgba(0, 217, 245, 0.15));
+    border: 1px solid var(--neon-emerald);
+    padding: 0.9rem;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: var(--neon-emerald);
+    font-weight: 800;
+    font-size: 0.95rem;
+}
+
+/* Interactive Quiz */
+.interactive-quiz {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid var(--border-glass);
+    margin-bottom: 1.2rem;
+}
+
+.quiz-header h4 {
+    font-size: 1.15rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.quiz-tracker {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--neon-cyan);
+    font-weight: 600;
+}
+
+.quiz-q-text {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #f8fafc;
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+}
+
+.quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.2rem;
+}
+
+.quiz-opt-btn {
+    padding: 0.85rem 1.2rem;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-glass);
+    color: #cbd5e1;
+    font-family: var(--font-ar);
+    font-size: 0.92rem;
+    font-weight: 600;
+    text-align: right;
+    cursor: pointer;
+    transition: all 0.2s var(--ease-smooth);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.quiz-opt-btn:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--neon-cyan);
+    transform: translateX(-4px);
+}
+
+.quiz-opt-btn.correct {
+    background: rgba(0, 245, 160, 0.2) !important;
+    border-color: var(--neon-emerald) !important;
+    color: var(--neon-emerald) !important;
+}
+
+.quiz-opt-btn.wrong {
+    background: rgba(244, 63, 94, 0.2) !important;
+    border-color: var(--neon-red) !important;
+    color: var(--neon-red) !important;
+}
+
+.quiz-explanation {
+    padding: 0.9rem 1.1rem;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.04);
+    border-right: 3px solid var(--neon-cyan);
+    font-size: 0.92rem;
+    line-height: 1.65;
+    color: #e2e8f0;
+    display: none;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.quiz-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-glass);
+    margin-top: 1rem;
+}
+
+.quiz-next-btn {
+    padding: 0.6rem 1.4rem;
+    border-radius: 30px;
+    background: linear-gradient(135deg, var(--neon-emerald), var(--neon-cyan));
+    border: none;
+    color: #07090e;
+    font-family: var(--font-ar);
+    font-weight: 800;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: transform 0.2s;
+}
+
+.quiz-next-btn:hover {
+    transform: scale(1.05);
+}
+
+.quiz-score-badge {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: var(--neon-gold);
+    font-weight: 700;
+}
+
+/* ==========================================================================
+   Footer Controls & Dots
+   ========================================================================== */
+.bottom-controls {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 68px;
+    background: rgba(10, 13, 22, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid var(--border-glass);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    padding: 0 1.5rem;
+}
+
+.ctrl-btn-group {
+    display: flex;
+    align-items: center;
+    gap: 1.8rem;
+    max-width: 900px;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.nav-btn {
+    padding: 0.65rem 1.6rem;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--border-glass);
+    color: var(--text-primary);
+    font-family: var(--font-ar);
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    transition: all 0.25s var(--ease-smooth);
+}
+
+.nav-btn:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.14);
+    border-color: var(--neon-cyan);
+    transform: translateY(-2px);
+}
+
+.next-btn {
+    background: linear-gradient(135deg, rgba(0, 245, 160, 0.25), rgba(0, 217, 245, 0.25));
+    border-color: var(--neon-emerald);
+}
+
+.next-btn:hover:not(:disabled) {
+    background: linear-gradient(135deg, var(--neon-emerald), var(--neon-cyan));
+    color: #07090e;
+    box-shadow: 0 0 20px rgba(0, 245, 160, 0.4);
+}
+
+.nav-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+.dots-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.18);
+    cursor: pointer;
+    transition: all 0.3s var(--ease-smooth);
+    position: relative;
+}
+
+.dot:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: scale(1.3);
+}
+
+.dot.active {
+    width: 26px;
+    border-radius: 12px;
+    background: var(--neon-emerald);
+    box-shadow: 0 0 10px var(--neon-emerald);
+}
+
+.slide-footer-hint {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 1.5rem;
+}
+
+/* ==========================================================================
+   Animations & Keyframes
+   ========================================================================== */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseOrb {
+    0%, 100% { box-shadow: 0 0 15px rgba(0, 245, 160, 0.3); transform: scale(1); }
+    50% { box-shadow: 0 0 25px rgba(0, 217, 245, 0.6); transform: scale(1.05); }
+}
+
+.float-anim {
+    animation: floatingCard 6s ease-in-out infinite;
+}
+
+@keyframes floatingCard {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+/* Helper Utilities */
+.text-emerald { color: var(--neon-emerald); }
+.text-cyan { color: var(--neon-cyan); }
+.text-purple { color: var(--neon-purple); }
+.text-amber { color: var(--neon-gold); }
+.text-gold { color: var(--neon-gold); }
+.text-red { color: var(--neon-red); }
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 1.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+
+/* ==========================================================================
+   Responsive Adaptations (Tablet & Mobile)
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .pillars-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .grid-3-col {
+        grid-template-columns: 1fr;
+    }
+    .hero-split, .grid-2-col, .dilemma-layout, .comparison-board {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    .slide-card {
+        padding: 1.2rem 1.5rem;
+    }
+    .slide-title {
+        font-size: 1.7rem;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Mobile Performance Boost: Eliminate GPU blur bottleneck */
+    * {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+
+    .top-nav {
+        padding: 0 1rem;
+        height: 58px;
+        background: #090c16 !important;
+    }
+    .bottom-controls {
+        height: 64px;
+        padding: 0 1rem;
+        background: #090c16 !important;
+    }
+    .slide-drawer {
+        background: #0b0f1c !important;
+    }
+    .glass-card, .founder-card, .pillar-card, .comp-col, .case-card, .critique-item {
+        background: #0f1424 !important;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45) !important;
+    }
+
+    /* Disable expensive animations during mobile scrolling */
+    .float-anim {
+        animation: none !important;
+    }
+
+    .progress-bar-container {
+        top: 58px;
+    }
+    .presentation-wrapper {
+        margin-top: 61px;
+        height: calc(100vh - 58px - 64px);
+    }
+    .brand-text h1 span {
+        display: none;
+    }
+    .slide-card {
+        padding: 1rem 0.9rem;
+        overscroll-behavior-y: contain;
+        touch-action: pan-y;
+    }
+    .slide-title {
+        font-size: 1.45rem;
+    }
+    .slide-title .en-sub {
+        font-size: 0.88rem;
+    }
+    .pillars-grid {
+        grid-template-columns: 1fr;
+    }
+    .dots-container {
+        display: none; /* Hide dots on small mobile to give room to buttons */
+    }
+    .ctrl-btn-group {
+        justify-content: space-around;
+    }
+    .btn-text {
+        font-size: 0.88rem;
+    }
+    .nav-btn {
+        padding: 0.55rem 1.2rem;
+    }
+    .dilemma-buttons {
+        flex-direction: column;
+    }
+    .action-btn {
+        width: 100%;
+    }
+    .calculus-controls {
+        max-height: none;
+    }
+    .circular-meter {
+        width: 140px;
+        height: 140px;
+    }
+    .score-number {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .slide-indicator {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.5rem;
+    }
+    .eg-p, .en-text, .dilemma-story {
+        font-size: 0.92rem;
+    }
+    .glass-card {
+        padding: 1.2rem 1rem;
+    }
+}
